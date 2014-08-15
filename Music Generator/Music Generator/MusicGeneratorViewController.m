@@ -25,8 +25,7 @@ OSStatus RenderMusic(
 	const double amplitude = 0.25;
     
 	// Get the Music parameters out of the view controller
-	MusicGeneratorViewController *viewController =
-    (__bridge MusicGeneratorViewController *)inRefCon;
+	MusicGeneratorViewController *viewController = (__bridge MusicGeneratorViewController *)inRefCon;
 	//double theta = viewController->theta;
 	//double theta_increment = 2.0 * M_PI * viewController->frequency / viewController->sampleRate;
     
@@ -97,6 +96,11 @@ void MusicInterruptionListener(void *inClientData, UInt32 inInterruptionState) {
 
 @synthesize playButton;
 @synthesize resetButton;
+
+
+
+//@synthesize run_drift_loop;
+bool _run_drift_loop;
 
 - (IBAction)slider_freq_Changed:(UISlider *)slider {
 	frequency = slider.value;
@@ -172,26 +176,18 @@ void MusicInterruptionListener(void *inClientData, UInt32 inInterruptionState) {
 }
 
 - (IBAction)togglePlay:(UIButton *)selectedButton {
-	if (MusicUnit) {
-		AudioOutputUnitStop(MusicUnit);
-		AudioUnitUninitialize(MusicUnit);
-		AudioComponentInstanceDispose(MusicUnit);
-		MusicUnit = nil;
+	
+    
+    if (MusicUnit) {
+        
+        [self stop_play];
 		
 		//[selectedButton setTitle:NSLocalizedString(@"Play", nil) forState:0];
         [self.playButton setTitle:@"play" forState:UIControlStateNormal];
 	}
 	else {
-		[self createMusicUnit];
-		
-		// Stop changing parameters on the unit
-		OSErr err = AudioUnitInitialize(MusicUnit);
-		NSAssert1(err == noErr, @"Error initializing unit: %hd", err);
-		
-		// Start playback
-		err = AudioOutputUnitStart(MusicUnit);
-		NSAssert1(err == noErr, @"Error starting unit: %hd", err);
-		
+        [self start_play];
+        
 		//[selectedButton setTitle:NSLocalizedString(@"Stop", nil) forState:0];
         [self.playButton setTitle:@"stop" forState:UIControlStateNormal];
 	}
@@ -203,6 +199,26 @@ void MusicInterruptionListener(void *inClientData, UInt32 inInterruptionState) {
 	}
 }
 
+- (void)stop_play {
+    AudioOutputUnitStop(MusicUnit);
+    AudioUnitUninitialize(MusicUnit);
+    AudioComponentInstanceDispose(MusicUnit);
+    MusicUnit = nil;
+    
+}
+
+- (void) start_play {
+    [self createMusicUnit];
+    
+    // Stop changing parameters on the unit
+    OSErr err = AudioUnitInitialize(MusicUnit);
+    NSAssert1(err == noErr, @"Error initializing unit: %hd", err);
+    
+    // Start playback
+    err = AudioOutputUnitStart(MusicUnit);
+    NSAssert1(err == noErr, @"Error starting unit: %hd", err);
+    
+}
 
 - (IBAction)reset:(UIButton *)selectedButton {
 
@@ -239,6 +255,7 @@ void MusicInterruptionListener(void *inClientData, UInt32 inInterruptionState) {
 	}
 	AudioSessionSetActive(true);
 
+    _run_drift_loop = false;
 
     [self.playButton setTitle:@"play" forState:UIControlStateNormal];
 }
@@ -259,6 +276,72 @@ void MusicInterruptionListener(void *inClientData, UInt32 inInterruptionState) {
     self.playButton = nil;
     
 	AudioSessionSetActive(false);
+}
+
+
+- (IBAction)spawn_drift_loop:(id)sender {
+    if(!_run_drift_loop) {
+        _run_drift_loop = true;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            [self drift_loop_background];
+        });
+    }
+    else {
+        _run_drift_loop = false;
+    }
+    
+}
+
+-(void) drift_loop_background {
+
+    while(_run_drift_loop) {
+        
+        //[self start_play];
+        
+        int var_to_change_this_iter = random() % 4;
+        
+        sleep(3);
+        
+        if(var_to_change_this_iter == 0) {
+            if( self.var_a_Slider.value > 0) {
+                self.var_a_Slider.value = self.var_a_Slider.value - 1;
+            }
+            else if( self.var_a_Slider.value == 0) {
+                self.var_a_Slider.value = 26;
+            }
+            [self slider_b_Changed:var_b_Slider];
+        }
+        else if(var_to_change_this_iter == 1) {
+            if( self.var_b_Slider.value > 0) {
+                self.var_b_Slider.value = self.var_b_Slider.value - 1;
+            }
+            else if(self.var_b_Slider.value == 0) {
+                self.var_b_Slider.value = 80;
+            }
+            [self slider_b_Changed:var_b_Slider];
+        }
+        else if(var_to_change_this_iter == 2) {
+            if( self.var_c_Slider.value > -25) {
+                self.var_c_Slider.value = self.var_c_Slider.value - 1;
+            }
+            else if(self.var_c_Slider.value == -25) {
+                self.var_c_Slider.value = 25;
+            }
+            [self slider_c_Changed:var_b_Slider];
+        }
+        else {
+            if( self.frequencySlider.value > 100) {
+                self.frequencySlider.value = self.frequencySlider.value - 5;
+            }
+            else if ( self.frequencySlider.value == 100){
+                self.frequencySlider.value = 1000;
+            }
+            [self slider_freq_Changed:frequencySlider];
+        }
+        
+        //[self stop_play];
+    }
+    
 }
 
 @end

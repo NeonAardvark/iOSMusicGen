@@ -28,6 +28,8 @@
     UIButton *playButton;
     UIButton *resetButton;
     
+    //@property (nonatomic, retain) bool run_drift_loop;
+    
     AudioComponentInstance MusicUnit;
     
 @public
@@ -67,6 +69,7 @@
 
 - (IBAction)togglePlay:(UIButton *)selectedButton;
 - (void)stop;
+- (IBAction)spawn_drift_loop:(id)sender;
 
 @end
 
