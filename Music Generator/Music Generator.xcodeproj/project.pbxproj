@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED3417A8199C1B4600CC1295 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3417A7199C1B4600CC1295 /* Foundation.framework */; };
+		ED3417AA199C1B4600CC1295 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3417A9199C1B4600CC1295 /* CoreGraphics.framework */; };
+		ED3417AC199C1B4600CC1295 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3417AB199C1B4600CC1295 /* UIKit.framework */; };
+		ED3417B2199C1B4600CC1295 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED3417B0199C1B4600CC1295 /* InfoPlist.strings */; };
+		ED3417B4199C1B4600CC1295 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3417B3199C1B4600CC1295 /* main.m */; };
+		ED3417B8199C1B4600CC1295 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3417B7199C1B4600CC1295 /* AppDelegate.m */; };
+		ED3417BB199C1B4600CC1295 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3417B9199C1B4600CC1295 /* Main.storyboard */; };
+		ED3417BE199C1B4600CC1295 /* MusicGeneratorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3417BD199C1B4600CC1295 /* MusicGeneratorViewController.m */; };
+		ED3417C0199C1B4600CC1295 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED3417BF199C1B4600CC1295 /* Images.xcassets */; };
+		ED3417C7199C1B4600CC1295 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3417C6199C1B4600CC1295 /* XCTest.framework */; };
+		ED3417C8199C1B4600CC1295 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3417A7199C1B4600CC1295 /* Foundation.framework */; };
+		ED3417C9199C1B4600CC1295 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3417AB199C1B4600CC1295 /* UIKit.framework */; };
+		ED3417D1199C1B4600CC1295 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED3417CF199C1B4600CC1295 /* InfoPlist.strings */; };
+		ED3417D3199C1B4600CC1295 /* Music_GeneratorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3417D2199C1B4600CC1295 /* Music_GeneratorTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ED3417CA199C1B4600CC1295 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED34179C199C1B4600CC1295 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED3417A3199C1B4600CC1295;
+			remoteInfo = "Music Generator";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		ED3417A4199C1B4600CC1295 /* Music Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED3417A7199C1B4600CC1295 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		ED3417A9199C1B4600CC1295 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		ED3417AB199C1B4600CC1295 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		ED3417AF199C1B4600CC1295 /* Music Generator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Music Generator-Info.plist"; sourceTree = "<group>"; };
+		ED3417B1199C1B4600CC1295 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ED3417B3199C1B4600CC1295 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ED3417B5199C1B4600CC1295 /* Music Generator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Music Generator-Prefix.pch"; sourceTree = "<group>"; };
+		ED3417B6199C1B4600CC1295 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		ED3417B7199C1B4600CC1295 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ED3417BA199C1B4600CC1295 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ED3417BC199C1B4600CC1295 /* MusicGeneratorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicGeneratorViewController.h; sourceTree = "<group>"; };
+		ED3417BD199C1B4600CC1295 /* MusicGeneratorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicGeneratorViewController.m; sourceTree = "<group>"; };
+		ED3417BF199C1B4600CC1295 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		ED3417C5199C1B4600CC1295 /* Music GeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Music GeneratorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED3417C6199C1B4600CC1295 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		ED3417CE199C1B4600CC1295 /* Music GeneratorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Music GeneratorTests-Info.plist"; sourceTree = "<group>"; };
+		ED3417D0199C1B4600CC1295 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ED3417D2199C1B4600CC1295 /* Music_GeneratorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Music_GeneratorTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED3417A1199C1B4600CC1295 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED3417AA199C1B4600CC1295 /* CoreGraphics.framework in Frameworks */,
+				ED3417AC199C1B4600CC1295 /* UIKit.framework in Frameworks */,
+				ED3417A8199C1B4600CC1295 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED3417C2199C1B4600CC1295 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED3417C7199C1B4600CC1295 /* XCTest.framework in Frameworks */,
+				ED3417C9199C1B4600CC1295 /* UIKit.framework in Frameworks */,
+				ED3417C8199C1B4600CC1295 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED34179B199C1B4600CC1295 = {
+			isa = PBXGroup;
+			children = (
+				ED3417AD199C1B4600CC1295 /* Music Generator */,
+				ED3417CC199C1B4600CC1295 /* Music GeneratorTests */,
+				ED3417A6199C1B4600CC1295 /* Frameworks */,
+				ED3417A5199C1B4600CC1295 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ED3417A5199C1B4600CC1295 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED3417A4199C1B4600CC1295 /* Music Generator.app */,
+				ED3417C5199C1B4600CC1295 /* Music GeneratorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED3417A6199C1B4600CC1295 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED3417A7199C1B4600CC1295 /* Foundation.framework */,
+				ED3417A9199C1B4600CC1295 /* CoreGraphics.framework */,
+				ED3417AB199C1B4600CC1295 /* UIKit.framework */,
+				ED3417C6199C1B4600CC1295 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED3417AD199C1B4600CC1295 /* Music Generator */ = {
+			isa = PBXGroup;
+			children = (
+				ED3417B6199C1B4600CC1295 /* AppDelegate.h */,
+				ED3417B7199C1B4600CC1295 /* AppDelegate.m */,
+				ED3417B9199C1B4600CC1295 /* Main.storyboard */,
+				ED3417BC199C1B4600CC1295 /* MusicGeneratorViewController.h */,
+				ED3417BD199C1B4600CC1295 /* MusicGeneratorViewController.m */,
+				ED3417BF199C1B4600CC1295 /* Images.xcassets */,
+				ED3417AE199C1B4600CC1295 /* Supporting Files */,
+			);
+			path = "Music Generator";
+			sourceTree = "<group>";
+		};
+		ED3417AE199C1B4600CC1295 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ED3417AF199C1B4600CC1295 /* Music Generator-Info.plist */,
+				ED3417B0199C1B4600CC1295 /* InfoPlist.strings */,
+				ED3417B3199C1B4600CC1295 /* main.m */,
+				ED3417B5199C1B4600CC1295 /* Music Generator-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ED3417CC199C1B4600CC1295 /* Music GeneratorTests */ = {
+			isa = PBXGroup;
+			children = (
+				ED3417D2199C1B4600CC1295 /* Music_GeneratorTests.m */,
+				ED3417CD199C1B4600CC1295 /* Supporting Files */,
+			);
+			path = "Music GeneratorTests";
+			sourceTree = "<group>";
+		};
+		ED3417CD199C1B4600CC1295 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ED3417CE199C1B4600CC1295 /* Music GeneratorTests-Info.plist */,
+				ED3417CF199C1B4600CC1295 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ED3417A3199C1B4600CC1295 /* Music Generator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED3417D6199C1B4600CC1295 /* Build configuration list for PBXNativeTarget "Music Generator" */;
+			buildPhases = (
+				ED3417A0199C1B4600CC1295 /* Sources */,
+				ED3417A1199C1B4600CC1295 /* Frameworks */,
+				ED3417A2199C1B4600CC1295 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Music Generator";
+			productName = "Music Generator";
+			productReference = ED3417A4199C1B4600CC1295 /* Music Generator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ED3417C4199C1B4600CC1295 /* Music GeneratorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED3417D9199C1B4600CC1295 /* Build configuration list for PBXNativeTarget "Music GeneratorTests" */;
+			buildPhases = (
+				ED3417C1199C1B4600CC1295 /* Sources */,
+				ED3417C2199C1B4600CC1295 /* Frameworks */,
+				ED3417C3199C1B4600CC1295 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ED3417CB199C1B4600CC1295 /* PBXTargetDependency */,
+			);
+			name = "Music GeneratorTests";
+			productName = "Music GeneratorTests";
+			productReference = ED3417C5199C1B4600CC1295 /* Music GeneratorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED34179C199C1B4600CC1295 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = com.azural;
+				TargetAttributes = {
+					ED3417C4199C1B4600CC1295 = {
+						TestTargetID = ED3417A3199C1B4600CC1295;
+					};
+				};
+			};
+			buildConfigurationList = ED34179F199C1B4600CC1295 /* Build configuration list for PBXProject "Music Generator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ED34179B199C1B4600CC1295;
+			productRefGroup = ED3417A5199C1B4600CC1295 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED3417A3199C1B4600CC1295 /* Music Generator */,
+				ED3417C4199C1B4600CC1295 /* Music GeneratorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED3417A2199C1B4600CC1295 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED3417C0199C1B4600CC1295 /* Images.xcassets in Resources */,
+				ED3417B2199C1B4600CC1295 /* InfoPlist.strings in Resources */,
+				ED3417BB199C1B4600CC1295 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED3417C3199C1B4600CC1295 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED3417D1199C1B4600CC1295 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED3417A0199C1B4600CC1295 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED3417BE199C1B4600CC1295 /* MusicGeneratorViewController.m in Sources */,
+				ED3417B8199C1B4600CC1295 /* AppDelegate.m in Sources */,
+				ED3417B4199C1B4600CC1295 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED3417C1199C1B4600CC1295 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED3417D3199C1B4600CC1295 /* Music_GeneratorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ED3417CB199C1B4600CC1295 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED3417A3199C1B4600CC1295 /* Music Generator */;
+			targetProxy = ED3417CA199C1B4600CC1295 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ED3417B0199C1B4600CC1295 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED3417B1199C1B4600CC1295 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		ED3417B9199C1B4600CC1295 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED3417BA199C1B4600CC1295 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		ED3417CF199C1B4600CC1295 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED3417D0199C1B4600CC1295 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ED3417D4199C1B4600CC1295 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		ED3417D5199C1B4600CC1295 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ED3417D7199C1B4600CC1295 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Music Generator/Music Generator-Prefix.pch";
+				INFOPLIST_FILE = "Music Generator/Music Generator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		ED3417D8199C1B4600CC1295 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Music Generator/Music Generator-Prefix.pch";
+				INFOPLIST_FILE = "Music Generator/Music Generator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		ED3417DA199C1B4600CC1295 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Music Generator.app/Music Generator";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Music Generator/Music Generator-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Music GeneratorTests/Music GeneratorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		ED3417DB199C1B4600CC1295 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Music Generator.app/Music Generator";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Music Generator/Music Generator-Prefix.pch";
+				INFOPLIST_FILE = "Music GeneratorTests/Music GeneratorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED34179F199C1B4600CC1295 /* Build configuration list for PBXProject "Music Generator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED3417D4199C1B4600CC1295 /* Debug */,
+				ED3417D5199C1B4600CC1295 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED3417D6199C1B4600CC1295 /* Build configuration list for PBXNativeTarget "Music Generator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED3417D7199C1B4600CC1295 /* Debug */,
+				ED3417D8199C1B4600CC1295 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		ED3417D9199C1B4600CC1295 /* Build configuration list for PBXNativeTarget "Music GeneratorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED3417DA199C1B4600CC1295 /* Debug */,
+				ED3417DB199C1B4600CC1295 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ED34179C199C1B4600CC1295 /* Project object */;
+}
