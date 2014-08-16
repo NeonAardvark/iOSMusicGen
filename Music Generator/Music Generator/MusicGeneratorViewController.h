@@ -36,6 +36,7 @@
     
     AudioComponentInstance MusicUnit;
     
+    UISegmentedControl *var_depth_seg_Button;
     
 @public
     double frequency;
@@ -45,6 +46,8 @@
     double var_a;
     double var_b;
     double var_c;
+    
+    int depth;
     
     //double realfreq;
     
@@ -72,9 +75,14 @@
 - (IBAction)slider_b_Changed:(UISlider *)var_b_Slider;  //40
 - (IBAction)slider_c_Changed:(UISlider *)var_c_Slider;  //0
 
+- (IBAction)seg_depth_changed:(UISegmentedControl *)depth_control;
 
 @property (nonatomic, retain) IBOutlet UIButton *playButton;
 @property (nonatomic, retain) IBOutlet UIButton *resetButton;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *var_depth_seg_Button;
+
+
+
 
 - (IBAction)togglePlay:(UIButton *)selectedButton;
 - (void)stop;

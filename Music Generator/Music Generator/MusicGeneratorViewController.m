@@ -60,41 +60,54 @@ OSStatus RenderMusic(
         
         ascend  = (int) viewController->frequency;
         
+        
+        Float32 divider = 1;
+        
+        
         char sound_point = (char)(index * ( ( (index>>shift_a)   |
                                               (index>>shift_b) ) |
                                               (ascend & (index>>shift_c)) ) );
         
         Float32 sound_point_float = (Float32)sound_point;
         
-        int shift_a2 = (int) viewController->var_a - 10;
-        int shift_b2 = (int) viewController->var_b - 5;
-        int shift_c2 = (int) viewController->var_c - 2;
+        if(viewController->depth > 0) {
         
-        int ascend2  = (int) viewController->frequency;
+            Float32 ratio = 1.5;
+            
+            int shift_a2 = (int) viewController->var_a - 10;
+            int shift_b2 = (int) viewController->var_b - 5;
+            int shift_c2 = (int) viewController->var_c - 2;
         
-        char sound_point2 = (char)(index * ( ( (index>>shift_a2)   |
-                                             (index>>shift_b2) )   |
-                                             (ascend2 & (index>>shift_c2)) ) );
+            int ascend2  = (int) viewController->frequency;
         
-        Float32 sound_point2_float = (Float32)sound_point2 / 2;
+            char sound_point2 = (char)(index * ( ( (index>>shift_a2)   |
+                                                   (index>>shift_b2) )   |
+                                                   (ascend2 & (index>>shift_c2)) ) );
         
+            sound_point_float = sound_point_float + (Float32)sound_point2 / ratio;
         
+            divider = divider + (1/ratio);
+        }
+        else if(viewController->depth == 2) {
+
+            Float32 ratio = 2.0;
+            
+            int shift_a3 = (int) viewController->var_a - 20;
+            int shift_b3 = (int) viewController->var_b - 10;
+            int shift_c3 = (int) viewController->var_c - 4;
         
-        int shift_a3 = (int) viewController->var_a - 20;
-        int shift_b3 = (int) viewController->var_b - 10;
-        int shift_c3 = (int) viewController->var_c - 4;
+            int ascend3  = (int) viewController->frequency;
         
-        int ascend3  = (int) viewController->frequency;
+            char sound_point3 = (char)(index * ( ( (index>>shift_a3)   |
+                                                   (index>>shift_b3) )   |
+                                                   (ascend3 & (index>>shift_c3)) ) );
+            sound_point_float += (Float32)sound_point3 / ratio;
         
-        char sound_point3 = (char)(index * ( ( (index>>shift_a3)   |
-                                               (index>>shift_b3) )   |
-                                               (ascend3 & (index>>shift_c3)) ) );
+            divider = divider + (1/ratio);
+        }
         
-        Float32 sound_point3_float = (Float32)sound_point3 / 3;
-        
-        
-        Float32 sound_point_norm = sound_point_float + sound_point2_float + sound_point3_float;
-        sound_point_norm /= (256 * 2 * (11/6));
+        Float32 sound_point_norm = sound_point_float;
+        sound_point_norm /= (256 * 2 * (divider));
         sound_point_norm -= amplitude;
         buffer[frame] = sound_point_norm;
         
@@ -133,7 +146,7 @@ void MusicInterruptionListener(void *inClientData, UInt32 inInterruptionState) {
 @synthesize playButton;
 @synthesize resetButton;
 
-
+@synthesize var_depth_seg_Button;
 
 //@synthesize run_drift_loop;
 bool _run_drift_loop;
@@ -157,6 +170,10 @@ bool _run_drift_loop;
 - (IBAction)slider_c_Changed:(UISlider *)slider {
     var_c = slider.value;
     var_c_val_Label.text = [NSString stringWithFormat:@"%3.0f", var_c];
+}
+
+- (IBAction)seg_depth_changed:(UISegmentedControl *)depth_control {
+    depth = depth_control.selectedSegmentIndex;
 }
 
 - (void)createMusicUnit {
