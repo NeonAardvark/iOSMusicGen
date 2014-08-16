@@ -1,4 +1,4 @@
 iOSMusicGen
 ===========
 
-Auto music generator for iPhone
+Auto chip tune music generator for iPhone
