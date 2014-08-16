@@ -34,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED078FE8199EC8E9009E72BA /* audio_constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = audio_constants.h; sourceTree = "<group>"; };
 		ED3417A4199C1B4600CC1295 /* Music Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3417A7199C1B4600CC1295 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ED3417A9199C1B4600CC1295 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -116,6 +117,7 @@
 				ED3417B7199C1B4600CC1295 /* AppDelegate.m */,
 				ED3417B9199C1B4600CC1295 /* Main.storyboard */,
 				ED3417BC199C1B4600CC1295 /* MusicGeneratorViewController.h */,
+				ED078FE8199EC8E9009E72BA /* audio_constants.h */,
 				ED3417BD199C1B4600CC1295 /* MusicGeneratorViewController.m */,
 				ED3417BF199C1B4600CC1295 /* Images.xcassets */,
 				ED3417AE199C1B4600CC1295 /* Supporting Files */,
@@ -456,6 +458,7 @@
 				ED3417D8199C1B4600CC1295 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ED3417D9199C1B4600CC1295 /* Build configuration list for PBXNativeTarget "Music GeneratorTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +467,7 @@
 				ED3417DB199C1B4600CC1295 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

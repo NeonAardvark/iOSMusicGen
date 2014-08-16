@@ -14,15 +14,19 @@
 
 @interface MusicGeneratorViewController : UIViewController {
     UILabel *frequencyLabel;
+    UILabel *freq_val_Label;
     UISlider *frequencySlider;
-    
+
     UILabel *var_a_Label;
+    UILabel *var_a_val_Label;
     UISlider *var_a_Slider;
     
     UILabel *var_b_Label;
+    UILabel *var_b_val_Label;
     UISlider *var_b_Slider;
     
     UILabel *var_c_Label;
+    UILabel *var_c_val_Label;
     UISlider *var_c_Slider;
     
     UIButton *playButton;
@@ -31,6 +35,7 @@
     //@property (nonatomic, retain) bool run_drift_loop;
     
     AudioComponentInstance MusicUnit;
+    
     
 @public
     double frequency;
@@ -48,15 +53,19 @@
 
 @property (nonatomic, retain) IBOutlet UISlider *frequencySlider;
 @property (nonatomic, retain) IBOutlet UILabel *frequencyLabel;
+@property (nonatomic, retain) IBOutlet UILabel *freq_val_Label;
 
 @property (nonatomic, retain) IBOutlet UISlider *var_a_Slider;
 @property (nonatomic, retain) IBOutlet UILabel *var_a_Label;
+@property (nonatomic, retain) IBOutlet UILabel *var_a_val_Label;
 
 @property (nonatomic, retain) IBOutlet UISlider *var_b_Slider;
 @property (nonatomic, retain) IBOutlet UILabel *var_b_Label;
+@property (nonatomic, retain) IBOutlet UILabel *var_b_val_Label;
 
 @property (nonatomic, retain) IBOutlet UISlider *var_c_Slider;
 @property (nonatomic, retain) IBOutlet UILabel *var_c_Label;
+@property (nonatomic, retain) IBOutlet UILabel *var_c_val_Label;
 
 - (IBAction)slider_freq_Changed:(UISlider *)frequencySlider;  //609
 - (IBAction)slider_a_Changed:(UISlider *)var_a_Slider;  //13
@@ -70,6 +79,7 @@
 - (IBAction)togglePlay:(UIButton *)selectedButton;
 - (void)stop;
 - (IBAction)spawn_drift_loop:(id)sender;
+- (void) init_sliders;
 
 @end
 

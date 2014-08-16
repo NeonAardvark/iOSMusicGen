@@ -12,6 +12,7 @@
 
 #import "MusicGeneratorViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "audio_constants.h"
 
 OSStatus RenderMusic(
                      void *inRefCon,
@@ -60,12 +61,43 @@ OSStatus RenderMusic(
         ascend  = (int) viewController->frequency;
         
         char sound_point = (char)(index * ( ( (index>>shift_a)   |
-                                             (index>>shift_b) ) |
-                                           ( ascend & (index>>shift_c)) ) );
-        Float32 sound_point_norm = (Float32)sound_point;
-        sound_point_norm /= (256 * 2);
+                                              (index>>shift_b) ) |
+                                              (ascend & (index>>shift_c)) ) );
+        
+        Float32 sound_point_float = (Float32)sound_point;
+        
+        int shift_a2 = (int) viewController->var_a - 10;
+        int shift_b2 = (int) viewController->var_b - 5;
+        int shift_c2 = (int) viewController->var_c - 2;
+        
+        int ascend2  = (int) viewController->frequency;
+        
+        char sound_point2 = (char)(index * ( ( (index>>shift_a2)   |
+                                             (index>>shift_b2) )   |
+                                             (ascend2 & (index>>shift_c2)) ) );
+        
+        Float32 sound_point2_float = (Float32)sound_point2 / 2;
+        
+        
+        
+        int shift_a3 = (int) viewController->var_a - 20;
+        int shift_b3 = (int) viewController->var_b - 10;
+        int shift_c3 = (int) viewController->var_c - 4;
+        
+        int ascend3  = (int) viewController->frequency;
+        
+        char sound_point3 = (char)(index * ( ( (index>>shift_a3)   |
+                                               (index>>shift_b3) )   |
+                                               (ascend3 & (index>>shift_c3)) ) );
+        
+        Float32 sound_point3_float = (Float32)sound_point3 / 3;
+        
+        
+        Float32 sound_point_norm = sound_point_float + sound_point2_float + sound_point3_float;
+        sound_point_norm /= (256 * 2 * (11/6));
         sound_point_norm -= amplitude;
         buffer[frame] = sound_point_norm;
+        
     }
     
     // Store the theta back in the view controller
@@ -84,15 +116,19 @@ void MusicInterruptionListener(void *inClientData, UInt32 inInterruptionState) {
 
 @synthesize frequencySlider;
 @synthesize frequencyLabel;
+@synthesize freq_val_Label;
 
 @synthesize var_a_Slider;
 @synthesize var_a_Label;
+@synthesize var_a_val_Label;
 
 @synthesize var_b_Slider;
 @synthesize var_b_Label;
+@synthesize var_b_val_Label;
 
 @synthesize var_c_Slider;
 @synthesize var_c_Label;
+@synthesize var_c_val_Label;
 
 @synthesize playButton;
 @synthesize resetButton;
@@ -104,22 +140,23 @@ bool _run_drift_loop;
 
 - (IBAction)slider_freq_Changed:(UISlider *)slider {
     frequency = slider.value;
-    frequencyLabel.text = [NSString stringWithFormat:@"%4.0f", frequency];
+    freq_val_Label.text = [NSString stringWithFormat:@"%4.0f", frequency];
+    
 }
 
 - (IBAction)slider_a_Changed:(UISlider *)slider {
     var_a = slider.value;
-    var_a_Label.text = [NSString stringWithFormat:@"%3.0f", var_a];
+    var_a_val_Label.text = [NSString stringWithFormat:@"%3.0f", var_a];
 }
 
 - (IBAction)slider_b_Changed:(UISlider *)slider {
     var_b = slider.value;
-    var_b_Label.text = [NSString stringWithFormat:@"%3.0f", var_b];
+    var_b_val_Label.text = [NSString stringWithFormat:@"%3.0f", var_b];
 }
 
 - (IBAction)slider_c_Changed:(UISlider *)slider {
     var_c = slider.value;
-    var_c_Label.text = [NSString stringWithFormat:@"%3.0f", var_c];
+    var_c_val_Label.text = [NSString stringWithFormat:@"%3.0f", var_c];
 }
 
 - (void)createMusicUnit {
@@ -221,15 +258,31 @@ bool _run_drift_loop;
 }
 
 - (IBAction)reset:(UIButton *)selectedButton {
-
-    self.frequencySlider.value = 550;
-    self.var_a_Slider.value = 13;
-    self.var_b_Slider.value = 40;
-    self.var_c_Slider.value = 0;
     
+    [self init_sliders];
+    
+}
+
+-(void) init_sliders {
+    
+    self.frequencySlider.minimumValue = freq_min;
+    self.frequencySlider.value = freq_init;
+    self.frequencySlider.maximumValue = freq_max;
+    
+    self.var_a_Slider.minimumValue = a_min;
+    self.var_a_Slider.value = a_init;
+    self.var_a_Slider.maximumValue = a_max;
+    
+    self.var_b_Slider.minimumValue = b_min;
+    self.var_b_Slider.value = b_init;
+    self.var_b_Slider.maximumValue = b_max;
+    
+    self.var_c_Slider.minimumValue = c_min;
+    self.var_c_Slider.value = c_init;
+    self.var_c_Slider.maximumValue = c_max;
     
     [self slider_freq_Changed:frequencySlider];
-      [self slider_a_Changed:var_a_Slider];
+    [self slider_a_Changed:var_a_Slider];
     [self slider_b_Changed:var_b_Slider];
     [self slider_c_Changed:var_c_Slider];
 }
@@ -240,10 +293,8 @@ bool _run_drift_loop;
     //monkey
     //self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"pixellated_monkey.png"]];
     
-    [self slider_freq_Changed:frequencySlider];
-      [self slider_a_Changed:var_a_Slider];
-    [self slider_b_Changed:var_b_Slider];
-    [self slider_c_Changed:var_c_Slider];
+
+    [self init_sliders];
     
     //sampleRate = 44100;
     sampleRate = 20000;
@@ -263,15 +314,19 @@ bool _run_drift_loop;
 - (void)viewDidUnload {
     self.frequencySlider = nil;
     self.frequencyLabel = nil;
+    self.freq_val_Label = nil;
     
     self.var_a_Slider = nil;
     self.var_a_Label = nil;
+    self.var_a_val_Label = nil;
     
     self.var_b_Slider = nil;
     self.var_b_Label = nil;
+    self.var_b_val_Label = nil;
     
     self.var_c_Slider = nil;
     self.var_c_Label = nil;   
+    self.var_c_val_Label = nil;
     
     self.playButton = nil;
     
@@ -303,40 +358,37 @@ bool _run_drift_loop;
         sleep(3);
         
         if(var_to_change_this_iter == 0) {
-            if( self.var_a_Slider.value > 0) {
-                self.var_a_Slider.value = self.var_a_Slider.value - 1;
+            self.var_a_Slider.value = self.var_a_Slider.value - 1;
+            if( self.var_a_Slider.value < a_min) {
+                self.var_a_Slider.value = a_max;
             }
-            else if( self.var_a_Slider.value == 0) {
-                self.var_a_Slider.value = 26;
-            }
-            [self slider_b_Changed:var_b_Slider];
+
+            [self slider_a_Changed:var_b_Slider];
         }
         else if(var_to_change_this_iter == 1) {
-            if( self.var_b_Slider.value > 0) {
-                self.var_b_Slider.value = self.var_b_Slider.value - 1;
+            self.var_b_Slider.value = self.var_b_Slider.value - 1;
+            if( self.var_b_Slider.value < b_min) {
+                self.var_b_Slider.value = b_max;
             }
-            else if(self.var_b_Slider.value == 0) {
-                self.var_b_Slider.value = 80;
-            }
+
             [self slider_b_Changed:var_b_Slider];
         }
         else if(var_to_change_this_iter == 2) {
-            if( self.var_c_Slider.value > -25) {
-                self.var_c_Slider.value = self.var_c_Slider.value - 1;
+            self.var_c_Slider.value = self.var_c_Slider.value - 1;
+            if( self.var_c_Slider.value < c_min) {
+                self.var_c_Slider.value = c_max;
             }
-            else if(self.var_c_Slider.value == -25) {
-                self.var_c_Slider.value = 25;
-            }
-            [self slider_c_Changed:var_b_Slider];
+            
+            [self slider_c_Changed:var_c_Slider];
         }
         else {
-            if( self.frequencySlider.value > 100) {
-                self.frequencySlider.value = self.frequencySlider.value - 5;
+            self.frequencySlider.value = self.frequencySlider.value - 5;
+            if( self.frequencySlider.value < freq_min) {
+                self.frequencySlider.value = freq_max;
             }
-            else if ( self.frequencySlider.value == 100){
-                self.frequencySlider.value = 1000;
-            }
+            
             [self slider_freq_Changed:frequencySlider];
+            
         }
         
         //[self stop_play];
