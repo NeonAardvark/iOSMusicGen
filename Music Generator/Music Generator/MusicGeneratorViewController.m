@@ -363,7 +363,7 @@ bool _run_drift_loop;
                 self.var_a_Slider.value = a_max;
             }
 
-            [self slider_a_Changed:var_b_Slider];
+            [self slider_a_Changed:var_a_Slider];
         }
         else if(var_to_change_this_iter == 1) {
             self.var_b_Slider.value = self.var_b_Slider.value - 1;
